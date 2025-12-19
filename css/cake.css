@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: #f5deb3;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+}
+
+.plate {
+    width: 220px;
+    height: 8px;
+    background: #eee;
+    margin: 0 auto;
+}
+
+.layer {
+    width: 200px;
+    height: 40px;
+    background: #8b5a4a;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    opacity: 0;
+    transform: translateY(-60px)
+}
+
+.layer.top {
+    background: #a0522d;
+    position: relative;
+}
+
+.layer.top::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: #f5f5dc;
+    border-radius: 6px;
+}
+
+.candle {
+    width: 8px;
+    height: 40px;
+    background: #f5deb3;
+    margin: 0 auto 5px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-80px);
+    transition: all 0.6s ease;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.flame {
+    width: 10px;
+    height: 10px;
+    background: gold;
+    border-radius: 50%;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker 0.5s infinite alternate;
+}
+
+.flame.off {
+    display: none;
+}
+
+@keyframes flicker {
+    from {
+        transform: translateX(-50%) scale(1);
+    }
+    to {
+        transform: translateX(-50%) scale(1.3);
+    }
+}
+.heart {
+    width: 40px;
+    height: 40px;
+    background: red;
+    margin: 15px auto 0;
+    transform: rotate(-45deg);
+    animation: heartbeat 1s infinite;
+    position: relative;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before {
+    top: -20px;
+    left: 0;
+}
+
+.heart::after {
+    left: 20px;
+    top: 0;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(-45deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(-45deg) scale(1);
+    }
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fall{
+    transform: translateY(200px);
+    opacity: 0;
+}
+
+@media(max-width: 480px){
+    .cake, .layer{
+        width: 160px;
+    }
+    .plate{
+        width: 180px;
+    
+    }
+}
